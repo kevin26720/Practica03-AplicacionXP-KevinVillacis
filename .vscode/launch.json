@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<mads-todolist>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "madstodolist.Application",
+            "projectName": "mads-todolist",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
