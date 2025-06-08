@@ -1,5 +1,6 @@
 package madstodolist.authentication;
 
+import madstodolist.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,12 +12,14 @@ public class ManagerUserSession {
     @Autowired
     HttpSession session;
 
-    // Añadimos el id de usuario en la sesión HTTP para hacer
-    // una autorización sencilla. En los métodos de controllers
-    // comprobamos si el id del usuario logeado coincide con el obtenido
-    // desde la URL
+    @Autowired
+    UsuarioService usuarioService;
+
     public void logearUsuario(Long idUsuario) {
         session.setAttribute("idUsuarioLogeado", idUsuario);
+
+        // 👇 Esta línea permite que el navbar funcione bien
+        session.setAttribute("usuario", usuarioService.findById(idUsuario));
     }
 
     public Long usuarioLogeado() {
@@ -24,6 +27,6 @@ public class ManagerUserSession {
     }
 
     public void logout() {
-        session.setAttribute("idUsuarioLogeado", null);
+        session.invalidate();
     }
 }
