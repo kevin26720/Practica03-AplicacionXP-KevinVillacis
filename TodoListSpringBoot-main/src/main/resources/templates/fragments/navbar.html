@@ -5,9 +5,14 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
-        <!-- Mostrar "Tareas" solo si el usuario está logeado -->
+        <!-- Mostrar "Tareas" si logeado -->
         <li class="nav-item" th:if="${session.usuario != null}">
           <a class="nav-link" th:href="@{'/usuarios/' + ${session.usuario.id} + '/tareas'}">Tareas</a>
+        </li>
+
+        <!-- Mostrar "Usuarios" si logeado -->
+        <li class="nav-item" th:if="${session.usuario != null}">
+          <a class="nav-link" th:href="@{/registrados}">Usuarios</a>
         </li>
       </ul>
 
